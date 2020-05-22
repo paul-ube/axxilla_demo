@@ -2,8 +2,11 @@ import 'dart:math';
 
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:axxilla_demo/main.dart';
+import 'package:axxilla_demo/ui/widgets/cards/google_discover_card.dart';
+import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/widgets/logo_and_name_caption.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -79,7 +82,7 @@ class _FirstRowState extends State<FirstRow> {
                 margin: EdgeInsets.fromLTRB(
                     index == 0 ? 16 : 12, 8, index == 5 ? 16 : 4, 16),
                 child: index % 2 == 0
-                    ? _WideCard(
+                    ? GoogleDiscoverCard(
                         height: widget.height,
                       )
                     : _SquareCard(picsumImageString: _picsumImageString),
@@ -194,100 +197,6 @@ class _BottomSheet extends StatelessWidget {
   }
 }
 
-class _WideCard extends StatelessWidget {
-  final double height;
 
-  const _WideCard({Key key, this.height}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    TextTheme _textTheme = Theme.of(context).textTheme;
-    return Container(
-      height: height,
-      width: MediaQuery.of(context).size.width * 0.8,
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(kBorderRadius),
-        color: Colors.white,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Flexible(
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'This is a wide card inspired by Google Feed',
-                              maxLines: 2,
-                              style: _textTheme.headline6,
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              kLoremIpsum,
-                              maxLines: 3,
-                              style: _textTheme.bodyText2
-                                  .copyWith(height: 1.4, color: Colors.black54),
-                            ),
-                          ]),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(kBorderRadius),
-                  child: Image.asset(
-                    kPortraitImagesString[
-                        Random().nextInt(kPortraitImagesString.length)],
-                    fit: BoxFit.cover,
-                    height: height / 2,
-                    width: height / 2,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  IconButton(
-                    visualDensity: VisualDensity.comfortable,
-                    icon: Icon(OMIcons.share),
-                    iconSize: 18,
-                    color: Colors.black54,
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    visualDensity: VisualDensity.comfortable,
-                    icon: Icon(Icons.filter_list),
-                    iconSize: 18,
-                    color: Colors.black54,
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    visualDensity: VisualDensity.comfortable,
-                    icon: Icon(Icons.more_vert),
-                    iconSize: 18,
-                    color: Colors.black54,
-                    onPressed: () {},
-                  ),
-                ],
-              )
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+

@@ -1,8 +1,10 @@
+import 'package:axxilla_demo/ui/widgets/cards/multi_row_card.dart';
+import 'package:axxilla_demo/ui/widgets/cards/reflectly_card.dart';
+import 'package:axxilla_demo/ui/widgets/cards/spotify_list_tile.dart';
 import 'package:axxilla_demo/ui/widgets/first_page/first_row.dart';
 import 'package:axxilla_demo/ui/widgets/first_page/second_row.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -45,9 +47,23 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 FirstRow(height: 200.toDouble(), title: 'First Row'),
                 SecondRow(title: 'Second Row'),
+                MultiRowCard(),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+                  child: SpotifyListTile(),
+                ),
+//                Padding(
+//                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+//                  child: ReflectlyCard(),
+//                ),
+//                const SizedBox(height: 30),
               ],
             );
           }, childCount: 1),
+        ),
+        SliverFillRemaining(
+          fillOverscroll: true,
+
         ),
       ],
     );

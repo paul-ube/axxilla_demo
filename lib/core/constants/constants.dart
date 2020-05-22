@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 var kBackgroundColor = Color(0xffF9F9F9);
 var kWhiteColor = Color(0xffffffff);
-double kBorderRadius = 7;
+const double kBorderRadius = 7;
 
 BoxDecoration get kOverlayDecoration => BoxDecoration(
       borderRadius: BorderRadius.circular(kBorderRadius),
