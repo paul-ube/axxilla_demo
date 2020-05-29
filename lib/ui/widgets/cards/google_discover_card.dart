@@ -7,7 +7,7 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 class GoogleDiscoverCard extends StatelessWidget {
   final double height;
 
-  const GoogleDiscoverCard({Key key, this.height}) : super(key: key);
+  const GoogleDiscoverCard({Key key, this.height = 200}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

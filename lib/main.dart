@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
+import 'package:axxilla_demo/ui/screens/axxilla_clone.dart';
 import 'package:axxilla_demo/ui/screens/home_page.dart';
 import 'package:axxilla_demo/ui/screens/settings_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -68,9 +69,7 @@ class _MainScreenState extends State<MainScreen> {
     HomePage(
       key: PageStorageKey(0),
     ),
-    HomePage(
-      key: PageStorageKey(0),
-    ),
+    AxxillaClone(),
     SettingsPage(),
   ];
 
@@ -126,7 +125,7 @@ class _MainScreenState extends State<MainScreen> {
                     curve: Curves.decelerate,
                   ),
                   GButton(
-                    icon: LineAwesomeIcons.heart_o,
+                    icon: LineAwesomeIcons.fax,
                     text: 'Likes',
                   ),
                   GButton(

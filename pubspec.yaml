@@ -27,6 +27,7 @@ dependencies:
   transparent_image: ^1.0.0
   flutter_feather_icons: ^1.0.3
   flutter_boxicons: ^1.1.0
+  flutter_svg: ^0.17.4
   google_nav_bar: ^2.2.0
   google_fonts: ^1.1.0
   line_awesome_icons: ^1.0.4+2
@@ -70,6 +71,8 @@ flutter:
      - assets/landscape-6.png
      - assets/landscape-7.png
      - assets/landscape-8.png
+     - assets/axxilla_logo.png
+     - assets/introduction_image0.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
