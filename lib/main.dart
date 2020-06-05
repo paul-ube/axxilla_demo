@@ -1,25 +1,80 @@
+import 'dart:async';
+
 import 'package:animations/animations.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
-import 'package:axxilla_demo/ui/screens/axxilla_clone.dart';
-import 'package:axxilla_demo/ui/screens/home_page.dart';
 import 'package:axxilla_demo/ui/screens/settings_page.dart';
+import 'package:axxilla_demo/ui/screens/studies_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:provider/provider.dart';
+import 'package:sentry/sentry.dart';
 
-void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => RowSettings()),
-      ],
-      child: MyApp(),
-    ),
+import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/google_discover_clone.dart';
+
+SentryClient _sentry;
+
+bool get isInDebugMode {
+  bool inDebugMode = false;
+  assert(inDebugMode = true);
+  return inDebugMode;
+}
+
+Future<Null> _reportError(dynamic error, dynamic stackTrace) async {
+  print('Caught error: $error');
+
+  // Errors thrown in development mode are unlikely to be interesting. You can
+  // check if you are running in dev mode using an assertion and omit sending
+  // the report.
+  if (isInDebugMode) {
+    print(stackTrace);
+    print('In dev mode. Not sending report to Sentry.io.');
+    return;
+  }
+
+  final SentryResponse response = await _sentry.captureException(
+    exception: error,
+    stackTrace: stackTrace,
   );
+}
+
+Future<void> main() async {
+  await DotEnv().load('.env');
+  _sentry = new SentryClient(
+    dsn: DotEnv().env['dsn'],
+  );
+
+  FlutterError.onError = (FlutterErrorDetails details) async {
+    if (isInDebugMode) {
+      // In development mode simply print to console.
+      FlutterError.dumpErrorToConsole(details);
+    } else {
+      // In production mode report to the application zone to report to
+      // Sentry.
+      Zone.current.handleUncaughtError(
+        details.exception,
+        details.stack,
+      );
+    }
+  };
+
+  runZonedGuarded<Future<Null>>(() async {
+    initializeDateFormatting().then((_) => runApp(
+          MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => RowSettings()),
+            ],
+            child: MyApp(),
+          ),
+        ));
+  }, (error, stackTrace) async {
+    await _reportError(error, stackTrace);
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -28,8 +83,8 @@ class MyApp extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Colors.transparent,
         systemNavigationBarDividerColor: null,
@@ -37,7 +92,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Axxilla Demo',
         theme: ThemeData(
-          primarySwatch: Colors.grey,
+          primarySwatch: Colors.blueGrey,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           splashFactory: InkRipple.splashFactory,
           appBarTheme: AppBarTheme(
@@ -66,10 +121,10 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> pageList = <Widget>[
-    HomePage(
+    StudiesScreen(),
+    GoogleDiscoverClone(
       key: PageStorageKey(0),
     ),
-    AxxillaClone(),
     SettingsPage(),
   ];
 

@@ -13,11 +13,11 @@ BoxDecoration get kOverlayDecoration => BoxDecoration(
         end: Alignment.topCenter,
         stops: [
           0,
-          0.3,
+          0.4,
         ],
         colors: [
-          Colors.black87,
-          Colors.transparent,
+          Colors.black,
+          Colors.black12,
         ],
       ),
     );

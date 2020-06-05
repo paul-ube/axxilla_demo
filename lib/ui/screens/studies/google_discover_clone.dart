@@ -1,20 +1,19 @@
 import 'package:axxilla_demo/ui/widgets/cards/google_discover_card.dart';
 import 'package:axxilla_demo/ui/widgets/cards/multi_row_card.dart';
 import 'package:axxilla_demo/ui/widgets/cards/spotify_list_tile.dart';
-import 'package:axxilla_demo/ui/widgets/components/backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class GoogleDiscoverClone extends StatefulWidget {
+  const GoogleDiscoverClone({
     Key key,
   }) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _GoogleDiscoverCloneState createState() => _GoogleDiscoverCloneState();
 }
 
-class _HomePageState extends State<HomePage>
+class _GoogleDiscoverCloneState extends State<GoogleDiscoverClone>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
@@ -48,12 +47,7 @@ class _HomePageState extends State<HomePage>
               titleSpacing: 22,
               elevation: 2,
               expandedHeight: 130,
-title: Text('Home'),
-//              flexibleSpace: FlexibleSpaceBar(
-//                titlePadding:
-//                    const EdgeInsetsDirectional.fromSTEB(22, 16, 0, 16),
-//                title: Text('Home'),
-//              ),
+              title: Text('Home', style: Theme.of(context).textTheme.headline6),
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(kTextTabBarHeight),
                 child: Container(
