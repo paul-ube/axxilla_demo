@@ -22,6 +22,12 @@ class StudiesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
+    double _maxWidth = MediaQuery.of(context).size.width;
+    if (orientation == Orientation.landscape) {
+      _maxWidth = 600;
+    }
+
     return Container(
       decoration: kCardDecoration.copyWith(
         color: Colors.transparent,
@@ -61,8 +67,11 @@ class StudiesCard extends StatelessWidget {
                 ),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Padding(
+                  child: Container(
                     padding: const EdgeInsets.all(16),
+                    constraints: BoxConstraints(
+                      maxWidth: _maxWidth / 1.8,
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,9 +95,10 @@ class StudiesCard extends StatelessWidget {
                                   subtitle,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle1
+                                      .subtitle2
                                       .copyWith(
                                         color: textColor.withOpacity(0.7),
+                                        fontWeight: FontWeight.w400,
                                       ),
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,

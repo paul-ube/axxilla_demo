@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 class IconPlusName extends StatelessWidget {
   final String name;
   final IconData icon;
+  final TextStyle textStyle;
+  final Color iconColor;
 
-  const IconPlusName({Key key, @required this.name, @required this.icon})
-      : super(key: key);
+  const IconPlusName({
+    Key key,
+    @required this.name,
+    @required this.icon,
+    this.textStyle,
+    this.iconColor = Colors.black54,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class IconPlusName extends StatelessWidget {
       children: <Widget>[
         Icon(
           icon,
-          color: Colors.black54,
+          color: iconColor,
           size: 12,
         ),
         const SizedBox(
@@ -24,10 +31,11 @@ class IconPlusName extends StatelessWidget {
         Flexible(
           child: Text(
             name,
-            style: Theme.of(context).textTheme.caption.apply(
-                  color: Colors.black54,
-              fontSizeDelta: -2,
-                ),
+            style: textStyle ??
+                Theme.of(context).textTheme.caption.apply(
+                      color: Colors.black54,
+                      fontSizeDelta: -2,
+                    ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),

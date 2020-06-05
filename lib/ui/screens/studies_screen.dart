@@ -80,7 +80,8 @@ class _StudiesScreenState extends State<StudiesScreen> {
           ),
           StudiesCard(
             destination: TravelDemoScreen(),
-            title: 'Google Discover Clone',
+            title: 'Google Discover and News Clone',
+            subtitle: 'Cloning of cards present in Google Discover and News App',
             color: Colors.white,
             textColor: Colors.grey.shade900,
             assetImage: 'assets/landscape-5.png',
