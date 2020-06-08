@@ -43,6 +43,8 @@ dependencies:
   intl: ^0.16.1
   sentry: ^3.0.1
   smooth_star_rating: ^1.1.1
+  url_launcher: ^5.4.10
+  weather_icons: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -93,10 +95,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+   - family: ProductSansBold
+     fonts:
+       - asset: assets/fonts/Product_Sans_Bold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

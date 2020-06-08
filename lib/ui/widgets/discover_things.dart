@@ -104,7 +104,7 @@ class DiscoverThings extends StatelessWidget {
                         imageAsset: _imageAsset,
                         item: _item,
                         reviewCount: _item.reviewCount,
-                        rating: _item.rating.toDouble(),
+                        rating: _item.rating,
                         openContainer: openContainer,
                       );
                     });
@@ -256,7 +256,7 @@ class DiscoverItem {
   final String title;
   final String cost, time, location, type;
   final IconData typeIcon;
-  int rating;
+  double _rating;
   int reviewCount;
 
   DiscoverItem({
@@ -267,5 +267,7 @@ class DiscoverItem {
     this.type,
     this.typeIcon,
   })  : reviewCount = Random().nextInt(2500),
-        rating = Random().nextInt(5);
+        _rating = Random().nextInt(5).toDouble();
+
+  double get rating => _rating == 0 ? 1.5 : _rating;
 }

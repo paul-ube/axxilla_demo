@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-class SquareImage extends StatelessWidget {
+class SquareImage extends StatefulWidget {
   final double height;
   final BorderRadius borderRadius;
   final EdgeInsets padding;
@@ -16,18 +16,28 @@ class SquareImage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _SquareImageState createState() => _SquareImageState();
+}
+
+class _SquareImageState extends State<SquareImage>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
-      padding: padding ?? const EdgeInsets.only(left: 8.0),
+      padding: widget.padding ?? const EdgeInsets.only(left: 8.0),
       child: ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.circular(7),
+        borderRadius: widget.borderRadius ?? BorderRadius.circular(7),
         child: Image.asset(
           kPortraitImagesString[Random().nextInt(kPortraitImagesString.length)],
           fit: BoxFit.cover,
-          height: height,
-          width: height,
+          height: widget.height,
+          width: widget.height,
         ),
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

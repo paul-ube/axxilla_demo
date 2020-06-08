@@ -1,5 +1,4 @@
 import 'package:axxilla_demo/core/constants/constants.dart';
-import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_screen.dart';
 import 'package:flutter/material.dart';
 
 class StudiesCard extends StatelessWidget {
@@ -118,8 +117,7 @@ class StudiesCard extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => TravelDemoScreen()),
+                      MaterialPageRoute(builder: (context) => destination),
                     );
                   },
                 ),

@@ -42,13 +42,13 @@ class LogoAndName extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 3),
           child: Text(
             '•',
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .apply(color: Colors.black38),
+                .apply(color: Colors.black45),
           ),
         ),
         Text(
