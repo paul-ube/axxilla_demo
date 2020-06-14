@@ -3,12 +3,15 @@ import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:axxilla_demo/core/functions/url_launcher.dart';
 import 'package:axxilla_demo/ui/widgets/appbar/sliver_app_bar_title.dart';
 import 'package:axxilla_demo/ui/widgets/components/category_title.dart';
-import 'package:axxilla_demo/ui/widgets/discover_things.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'model/discover_item.dart';
+
 
 class TravelDemoDetails extends StatelessWidget {
-  final DiscoverItem discoverItem;
+  final DiscoverItemModel discoverItem;
   final String imageAsset;
 
   const TravelDemoDetails({Key key, this.discoverItem, this.imageAsset})
@@ -17,7 +20,6 @@ class TravelDemoDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -68,10 +70,10 @@ class TravelDemoDetails extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          stops: [0, 0.2, 0.95],
+//                          stops: [0, 0.5, 0.95],
                           colors: [
-                            Colors.black54,
-                            Colors.transparent,
+                            Colors.black,
+                            Colors.black.withOpacity(0),
                             Colors.black,
                           ],
                         ),

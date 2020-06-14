@@ -29,6 +29,20 @@ BoxDecoration get _boxDecoration => BoxDecoration(
 
 EdgeInsets get _margin => const EdgeInsets.fromLTRB(18, 6, 18, 12);
 
+class GoogleDiscoverClone extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return _AnnotatedRegion(
+      child: MaterialApp(
+        title: 'Google Discover Clone',
+        debugShowCheckedModeBanner: false,
+        theme: Theme.of(context),
+        home: DiscoverClone(),
+      ),
+    );
+  }
+}
+
 class _AnnotatedRegion extends StatelessWidget {
   final Widget child;
 
@@ -53,84 +67,81 @@ class _AnnotatedRegion extends StatelessWidget {
 class DiscoverClone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return _AnnotatedRegion(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        extendBody: true,
-        body: ListView(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          addAutomaticKeepAlives: true,
-          children: <Widget>[
-            const SizedBox(height: 54),
-            _CustomAppBar(),
-            const SizedBox(height: 16),
-            _WeatherCard(),
-            _SmallCard(
-              title: 'This is a wide card inspired by Google Feed',
-              content: kLoremIpsum,
-              orgName: 'Google',
-              relativeDate: '20 hours ago',
-            ),
-            _BigCard(
-              content: kLoremIpsum,
-              title: 'This is a big card inspired by Google Discover',
-              iconData: MdiIcons.google,
-              orgName: 'Google',
-              relativeDate: '1 month ago',
-            ),
-            _BigCard(
-              content: kLoremIpsum,
-              title: 'This is a big card inspired by Google Discover',
-              iconData: MdiIcons.google,
-              orgName: 'Google',
-              relativeDate: '1 month ago',
-              inCaseYouMissedIt: true,
-            ),
-            _SmallCard(
-              title:
-                  'iLTW Apologises To Xcalibur For His Remarks in The Pub Game',
-              content:
-                  'Virtus Pro carry iLTW made a public apology on his social'
-                  ' media page for his toxic behaviour in the pub '
-                  'game yesterday against Xcalibur',
-              iconData: Icons.translate,
-              relativeDate: '4 hours ago',
-              orgName: 'AFK Gaming',
-              inCaseYouMissedIt: true,
-            ),
-            _MultiRowCard(),
-            _BigCard(
-              content: kLoremIpsum,
-              title: 'This is a big card inspired by Google Discover',
-              iconData: MdiIcons.google,
-              orgName: 'Google',
-              relativeDate: '1 month ago',
-            ),
-            _DailyLifeDuringCOVID(),
-            _BigCard(
-              content: kLoremIpsum,
-              title: 'This is a big card inspired by Google Discover',
-              iconData: MdiIcons.google,
-              orgName: 'Google',
-              relativeDate: '1 month ago',
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List<Widget>.generate(
-                4,
-                (index) => _SmallCard(
-                  title: 'This is a wide card inspired by Google Feed',
-                  content: kLoremIpsum,
-                  orgName: 'Google',
-                  relativeDate: '20 hours ago',
-                ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      extendBody: true,
+      body: ListView(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        addAutomaticKeepAlives: true,
+        children: <Widget>[
+          const SizedBox(height: 54),
+          _CustomAppBar(),
+          const SizedBox(height: 16),
+          _WeatherCard(),
+          _SmallCard(
+            title: 'This is a wide card inspired by Google Feed',
+            content: kLoremIpsum,
+            orgName: 'Google',
+            relativeDate: '20 hours ago',
+          ),
+          _BigCard(
+            content: kLoremIpsum,
+            title: 'This is a big card inspired by Google Discover',
+            iconData: MdiIcons.google,
+            orgName: 'Google',
+            relativeDate: '1 month ago',
+          ),
+          _BigCard(
+            content: kLoremIpsum,
+            title: 'This is a big card inspired by Google Discover',
+            iconData: MdiIcons.google,
+            orgName: 'Google',
+            relativeDate: '1 month ago',
+            inCaseYouMissedIt: true,
+          ),
+          _SmallCard(
+            title:
+                'iLTW Apologises To Xcalibur For His Remarks in The Pub Game',
+            content: 'Virtus Pro carry iLTW made a public apology on his social'
+                ' media page for his toxic behaviour in the pub '
+                'game yesterday against Xcalibur',
+            iconData: Icons.translate,
+            relativeDate: '4 hours ago',
+            orgName: 'AFK Gaming',
+            inCaseYouMissedIt: true,
+          ),
+          _MultiRowCard(),
+          _BigCard(
+            content: kLoremIpsum,
+            title: 'This is a big card inspired by Google Discover',
+            iconData: MdiIcons.google,
+            orgName: 'Google',
+            relativeDate: '1 month ago',
+          ),
+          _DailyLifeDuringCOVID(),
+          _BigCard(
+            content: kLoremIpsum,
+            title: 'This is a big card inspired by Google Discover',
+            iconData: MdiIcons.google,
+            orgName: 'Google',
+            relativeDate: '1 month ago',
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List<Widget>.generate(
+              4,
+              (index) => _SmallCard(
+                title: 'This is a wide card inspired by Google Feed',
+                content: kLoremIpsum,
+                orgName: 'Google',
+                relativeDate: '20 hours ago',
               ),
             ),
-            _MoreStories(),
-          ],
-        ),
+          ),
+          _MoreStories(),
+        ],
       ),
     );
   }

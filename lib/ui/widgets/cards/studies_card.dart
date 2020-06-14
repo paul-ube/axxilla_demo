@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:axxilla_demo/core/constants/app_colors.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class StudiesCard extends StatelessWidget {
   final Widget destination;
@@ -114,11 +118,14 @@ class StudiesCard extends StatelessWidget {
                 type: MaterialType.transparency,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(kBorderRadius),
-                  onTap: () {
-                    Navigator.push(
+                  onTap: () async {
+                    await Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => destination),
                     );
+//                    Timer(Duration(milliseconds: 500), () {
+//                      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+//                    });
                   },
                 ),
               ),

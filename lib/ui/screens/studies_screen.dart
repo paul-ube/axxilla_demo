@@ -24,10 +24,13 @@ class _StudiesScreenState extends State<StudiesScreen> {
       key: scaffoldKey,
       appBar: AppBar(
         title: const Text('Studies'),
+        backgroundColor: Colors.blue[800],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(0),
-        children: <Widget>[
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: <Widget>[
 //          OpenContainerWrapper(
 //              destination: TravelDemoScreen(),
 //              closedColor: Colors.white,
@@ -72,22 +75,23 @@ class _StudiesScreenState extends State<StudiesScreen> {
 //                  ),
 //                );
 //              }),
-          StudiesCard(
-            destination: TravelDemoScreen(),
-            title: 'Travel App UI',
-            subtitle: 'A travel app ui inspired by figma',
-            color: primaryBlue,
-            assetImage: 'assets/landscape-4.png',
-          ),
-          StudiesCard(
-            destination: DiscoverClone(),
-            title: 'Google Discover and News Clone',
-            subtitle: 'Cloning of cards present in Google Discover and News App',
-            color: Colors.white,
-            textColor: Colors.grey.shade900,
-            assetImage: 'assets/landscape-5.png',
-          )
-        ],
+            StudiesCard(
+              destination: TravelDemoApp(),
+              title: 'Travel App UI',
+              subtitle: 'A travel app ui inspired by figma',
+              color: primaryBlue,
+              assetImage: 'assets/landscape-4.png',
+            ),
+            StudiesCard(
+              destination: GoogleDiscoverClone(),
+              title: 'Google Discover and News Clone',
+              subtitle: 'Cloning of cards present in Google Discover and News App',
+              color: Colors.white,
+              textColor: Colors.grey.shade900,
+              assetImage: 'assets/landscape-5.png',
+            )
+          ],
+        ),
       ),
     );
   }

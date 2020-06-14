@@ -6,23 +6,27 @@ class OpenContainerWrapper extends StatelessWidget {
     this.closedBuilder,
     this.transitionType = ContainerTransitionType.fade,
 //    this.onClosed,
-    this.destination, this.closedColor = Colors.transparent,
+    this.destination,
+    this.closedColor = Colors.transparent,
+    this.useRootNavigation = true,
   });
 
   final OpenContainerBuilder closedBuilder;
   final ContainerTransitionType transitionType;
+
 //  final ClosedCallback<bool> onClosed;
   final Widget destination;
   final Color closedColor;
+  final bool useRootNavigation;
 
   @override
   Widget build(BuildContext context) {
     return OpenContainer<bool>(
-     closedElevation: 0,
+      closedElevation: 0,
       closedShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.zero,
-
       ),
+      useRootNavigator: useRootNavigation,
       closedColor: closedColor,
       transitionType: transitionType,
       openBuilder: (BuildContext context, VoidCallback _) {

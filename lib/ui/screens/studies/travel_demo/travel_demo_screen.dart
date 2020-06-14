@@ -1,12 +1,32 @@
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:axxilla_demo/core/constants/app_colors.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
+import 'package:axxilla_demo/ui/screens/studies/travel_demo/theme.dart';
+import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_articles.dart';
+import 'package:axxilla_demo/ui/widgets/animations/open_container_animation/open_container_wrapper.dart';
 import 'package:axxilla_demo/ui/widgets/calendar/calendar_widget.dart';
 import 'package:axxilla_demo/ui/widgets/components/category_title.dart';
-import 'package:axxilla_demo/ui/widgets/discover_things.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/travel_demo/discover_things.dart';
+
+class TravelDemoApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Travel App',
+      debugShowCheckedModeBanner: false,
+      theme: craneTheme.copyWith(
+        appBarTheme:
+            const AppBarTheme(brightness: Brightness.dark, elevation: 0),
+      ),
+      home: TravelDemoScreen(),
+    );
+  }
+}
 
 class TravelDemoScreen extends StatelessWidget {
   static List<_CategoryDescription> _category = <_CategoryDescription>[
@@ -25,35 +45,49 @@ class TravelDemoScreen extends StatelessWidget {
       _maxWidth = 600;
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: primaryBlue,
-        title: Text('Travel Demo'),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white70,
+        systemNavigationBarDividerColor: null,
       ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        top: false,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.zero,
-          child: Center(
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: _maxWidth,
-              ),
-              child: ListView(
-                shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                padding: const EdgeInsets.only(top: kToolbarHeight),
-                children: <Widget>[
-                  _browseByCategories(context),
-                  const SizedBox(height: 32),
-                  CalendarWidget(),
-                  const SizedBox(height: 32),
-                  DiscoverThings(),
-                  const SizedBox(height: 32),
-                  _Articles(),
-                  const SizedBox(height: 32),
-                ],
+      child: Container(
+        color: primaryBlue,
+
+        child: SafeArea(
+          child: Scaffold(
+            primary: true,
+            appBar: AppBar(
+              title: Text('Travel Demo'),
+            ),
+            backgroundColor: Colors.white,
+            body: SingleChildScrollView(
+              padding: EdgeInsets.zero,
+              child: Center(
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: _maxWidth,
+                  ),
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    children: <Widget>[
+                      const SizedBox(height: 32),
+                      _browseByCategories(context),
+                      const SizedBox(height: 32),
+                      CalendarWidget(),
+                      const SizedBox(height: 32),
+                      DiscoverThings(),
+                      const SizedBox(height: 32),
+                      _Articles(),
+                      const SizedBox(height: 32),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -176,7 +210,7 @@ class TravelDemoScreen extends StatelessWidget {
 }
 
 class _Articles extends StatelessWidget {
-  int randomNumber = Random().nextInt(8);
+  int randomNumber = math.Random().nextInt(8);
 
   @override
   Widget build(BuildContext context) {
@@ -190,102 +224,131 @@ class _Articles extends StatelessWidget {
     if (_deviceWidth < 400) {
       _deviceWidth = 400;
     }
+
+    String imageAsset = 'assets/landscape-$randomNumber.png';
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         CategoryTitle(
           title: 'Articles',
         ),
         const SizedBox(height: 8),
-        Padding(
-            padding: const EdgeInsets.fromLTRB(0, 8, 0, 4),
-            child: AspectRatio(
-              aspectRatio: 16 / 10,
-              child: Container(
-                decoration: kCardDecoration.copyWith(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(kBorderRadius),
-                ),
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(kBorderRadius),
-                      child: Image.asset('assets/landscape-$randomNumber.png',
-                          fit: BoxFit.cover),
-                    ),
-                    Positioned.fill(
-                      child: Container(
-                        padding: const EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            stops: [0, 0.4, 0.95],
-                            colors: [
-                              Colors.black54,
-                              Colors.transparent,
-                              Colors.black54,
-                            ],
-                          ),
+        OpenContainerWrapper(
+            destination: TravelDemoArticles(
+              title: 'The big brown fox jumped over the lazy dog',
+              imageAsset: imageAsset,
+            ),
+            closedColor: Colors.white,
+            closedBuilder: (BuildContext _, VoidCallback openContainer) {
+              return _Article(
+                context: context,
+                deviceWidth: _deviceWidth,
+                openContainer: openContainer,
+                imageAsset: imageAsset,
+              );
+            }),
+      ],
+    );
+  }
+
+  Widget _Article(
+      {BuildContext context,
+      double deviceWidth,
+      VoidCallback openContainer,
+      String imageAsset}) {
+    return Padding(
+        padding: const EdgeInsets.fromLTRB(0, 8, 0, 4),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(kBorderRadius),
+          child: AspectRatio(
+            aspectRatio: 16 / 10,
+            child: Container(
+              decoration: kCardDecoration.copyWith(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(kBorderRadius),
+              ),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(kBorderRadius),
+                    child: Image.asset(imageAsset, fit: BoxFit.cover),
+                  ),
+                  Positioned.fill(
+                    child: Container(
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(kBorderRadius),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          stops: [0, 0.4, 0.95],
+                          colors: [
+                            Colors.black54,
+                            Colors.transparent,
+                            Colors.black54,
+                          ],
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'SAMPLE ARTICLE',
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'SAMPLE ARTICLE',
+                                style:
+                                    Theme.of(context).textTheme.overline.apply(
+                                          color: Colors.white,
+                                        ),
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              ConstrainedBox(
+                                constraints:
+                                    BoxConstraints(maxWidth: deviceWidth / 2),
+                                child: Text(
+                                  'The big brown fox jumped over the lazy dog',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .overline
+                                      .headline6
                                       .apply(
                                         color: Colors.white,
                                       ),
                                 ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                      maxWidth: _deviceWidth / 2),
-                                  child: Text(
-                                    'The big brown fox jumped over the lazy dog',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        .apply(
-                                          color: Colors.white,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              'The big brown fox jumped over the lazy dog',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1
-                                  .copyWith(
-                                    color: Colors.white,
-                                    letterSpacing: 0.2,
-                                    fontSize: 16,
-                                  ),
-                            )
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'The big brown fox jumped over the lazy dog',
+                            style:
+                                Theme.of(context).textTheme.subtitle1.copyWith(
+                                      color: Colors.white,
+                                      letterSpacing: 0.2,
+                                      fontSize: 16,
+                                    ),
+                          )
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Positioned.fill(
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(kBorderRadius),
+                      onTap: openContainer,
+                    ),
+                  )
+                ],
               ),
-            ))
-      ],
-    );
+            ),
+          ),
+        ));
   }
 }
 

@@ -7,7 +7,6 @@ import 'package:axxilla_demo/ui/screens/studies_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -80,34 +79,22 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.light,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: null,
-      ),
-      child: MaterialApp(
-        title: 'Axxilla Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          splashFactory: InkRipple.splashFactory,
-          appBarTheme: AppBarTheme(
-            color: kBackgroundColor,
-            elevation: 0,
-          ),
-          scaffoldBackgroundColor: kBackgroundColor,
-//          primaryTextTheme: GoogleFonts.varelaTextTheme(),
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.android: ZoomPageTransitionsBuilder(),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          }),
+    return MaterialApp(
+      title: 'Axxilla Demo',
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        splashFactory: InkRipple.splashFactory,
+        appBarTheme: AppBarTheme(
+          color: kBackgroundColor,
+          elevation: 0,
         ),
-        home: MainScreen(),
+        scaffoldBackgroundColor: kBackgroundColor,
+        pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        }),
       ),
+      home: MainScreen(),
     );
   }
 }

@@ -1,17 +1,19 @@
 import 'dart:math';
 
 import 'package:axxilla_demo/core/constants/app_colors.dart';
-import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_details.dart';
+
 import 'package:axxilla_demo/ui/widgets/animations/open_container_animation/open_container_wrapper.dart';
 import 'package:axxilla_demo/ui/widgets/components/category_title.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-import 'icon_plus_name.dart';
+import '../../../widgets/icon_plus_name.dart';
+import 'model/discover_item.dart';
+import 'travel_demo_details.dart';
 
-final List<DiscoverItem> _discoverList = <DiscoverItem>[
-  DiscoverItem(
+final List<DiscoverItemModel> _discoverList = <DiscoverItemModel>[
+  DiscoverItemModel(
     title: 'Authentic Vietnamese Dinner',
     cost: '\$290 per person',
     time: '90 minutes',
@@ -19,7 +21,7 @@ final List<DiscoverItem> _discoverList = <DiscoverItem>[
     type: 'Accepts crypto',
     typeIcon: MdiIcons.bitcoin,
   ),
-  DiscoverItem(
+  DiscoverItemModel(
     title: 'Learn to surf at Venice Beach',
     cost: '\$56 per person',
     time: '2 hours',
@@ -27,7 +29,7 @@ final List<DiscoverItem> _discoverList = <DiscoverItem>[
     type: 'Good for groups',
     typeIcon: Icons.group,
   ),
-  DiscoverItem(
+  DiscoverItemModel(
     title: 'Concerts at the Cedar Cultural Center',
     cost: '\$517 per person',
     time: '93 minutes',
@@ -35,7 +37,7 @@ final List<DiscoverItem> _discoverList = <DiscoverItem>[
     type: 'Good for groups',
     typeIcon: Icons.group,
   ),
-  DiscoverItem(
+  DiscoverItemModel(
     title: 'Safari across Namibia Wildlife Preserve',
     cost: '\$449 per person',
     time: '3 hours',
@@ -43,7 +45,7 @@ final List<DiscoverItem> _discoverList = <DiscoverItem>[
     type: 'Outdoors',
     typeIcon: MdiIcons.pineTree,
   ),
-  DiscoverItem(
+  DiscoverItemModel(
     title: 'Photography Course for Beginners',
     cost: '\$57 per person',
     time: '120 minutes',
@@ -51,7 +53,7 @@ final List<DiscoverItem> _discoverList = <DiscoverItem>[
     type: 'Good for groups',
     typeIcon: Icons.group,
   ),
-  DiscoverItem(
+  DiscoverItemModel(
     title: 'Kyoto Landmark Sightseeing Tour',
     cost: '\$29 per person',
     time: '4 hours',
@@ -90,7 +92,7 @@ class DiscoverThings extends StatelessWidget {
                 int _index = index + 1;
                 if (_index > 8) _index = 1;
                 String _imageAsset = 'assets/landscape-$_index.png';
-                DiscoverItem _item = _discoverList[index];
+                DiscoverItemModel _item = _discoverList[index];
 
                 return OpenContainerWrapper(
                     destination: TravelDemoDetails(
@@ -118,7 +120,7 @@ class DiscoverThings extends StatelessWidget {
 class _DiscoverWidget extends StatelessWidget {
   const _DiscoverWidget({
     Key key,
-    @required DiscoverItem item,
+    @required DiscoverItemModel item,
     @required String imageAsset,
     @required VoidCallback openContainer,
     this.rating,
@@ -128,7 +130,7 @@ class _DiscoverWidget extends StatelessWidget {
         _openContainer = openContainer,
         super(key: key);
 
-  final DiscoverItem _item;
+  final DiscoverItemModel _item;
   final String _imageAsset;
   final VoidCallback _openContainer;
   final double rating;
@@ -143,11 +145,14 @@ class _DiscoverWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              AspectRatio(
-                aspectRatio: 16 / 11,
-                child: Image.asset(
-                  _imageAsset,
-                  fit: BoxFit.cover,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: AspectRatio(
+                  aspectRatio: 16 / 11,
+                  child: Image.asset(
+                    _imageAsset,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Padding(
@@ -252,22 +257,3 @@ class _DiscoverWidget extends StatelessWidget {
   }
 }
 
-class DiscoverItem {
-  final String title;
-  final String cost, time, location, type;
-  final IconData typeIcon;
-  double _rating;
-  int reviewCount;
-
-  DiscoverItem({
-    this.title,
-    this.cost,
-    this.time,
-    this.location,
-    this.type,
-    this.typeIcon,
-  })  : reviewCount = Random().nextInt(2500),
-        _rating = Random().nextInt(5).toDouble();
-
-  double get rating => _rating == 0 ? 1.5 : _rating;
-}
