@@ -1,7 +1,7 @@
 import 'package:axxilla_demo/core/constants/app_colors.dart';
 import 'package:axxilla_demo/ui/screens/studies/google_discover_clone/discover_clone_screen.dart';
+import 'package:axxilla_demo/ui/screens/studies/google_discover_clone/weather_screen.dart';
 import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_screen.dart';
-import 'package:axxilla_demo/ui/widgets/animations/open_container_animation/open_container_wrapper.dart';
 import 'package:axxilla_demo/ui/widgets/cards/studies_card.dart';
 import 'package:flutter/material.dart';
 
@@ -11,23 +11,21 @@ class StudiesScreen extends StatefulWidget {
 }
 
 class _StudiesScreenState extends State<StudiesScreen> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   void initState() {
+    Future.microtask(() => TravelDemoScreen());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
         title: const Text('Studies'),
         backgroundColor: Colors.blue[800],
       ),
       body: SafeArea(
-        top: false,
+//        top: false,
         child: ListView(
           padding: const EdgeInsets.all(0),
           children: <Widget>[
@@ -85,10 +83,20 @@ class _StudiesScreenState extends State<StudiesScreen> {
             StudiesCard(
               destination: GoogleDiscoverClone(),
               title: 'Google Discover and News Clone',
-              subtitle: 'Cloning of cards present in Google Discover and News App',
+              subtitle:
+                  'Cloning of cards present in Google Discover and News App',
               color: Colors.white,
               textColor: Colors.grey.shade900,
               assetImage: 'assets/landscape-5.png',
+            ),
+            StudiesCard(
+              destination: WeatherScreen(),
+              title: 'Overdrop Clone',
+              subtitle:
+              'A weather forecasting application',
+              color: Colors.grey[800],
+              textColor: Colors.white,
+              assetImage: 'assets/landscape-2.png',
             )
           ],
         ),

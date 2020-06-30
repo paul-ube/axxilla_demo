@@ -6,6 +6,7 @@ import 'package:axxilla_demo/ui/widgets/components/square_image.dart';
 import 'package:axxilla_demo/ui/widgets/logo_and_name_caption.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:weather_icons/weather_icons.dart';
@@ -30,16 +31,12 @@ BoxDecoration get _boxDecoration => BoxDecoration(
 EdgeInsets get _margin => const EdgeInsets.fromLTRB(18, 6, 18, 12);
 
 class GoogleDiscoverClone extends StatelessWidget {
+  static const String homeRoute =
+      'ui/screens/studies/google_discover_clone/discover_clone_screen.dart';
+
   @override
   Widget build(BuildContext context) {
-    return _AnnotatedRegion(
-      child: MaterialApp(
-        title: 'Google Discover Clone',
-        debugShowCheckedModeBanner: false,
-        theme: Theme.of(context),
-        home: DiscoverClone(),
-      ),
-    );
+    return DiscoverClone();
   }
 }
 
@@ -65,6 +62,8 @@ class _AnnotatedRegion extends StatelessWidget {
 }
 
 class DiscoverClone extends StatelessWidget {
+  const DiscoverClone();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -232,83 +231,101 @@ class _WeatherCard extends StatelessWidget {
     return Container(
       height: 70,
       decoration: _boxDecoration,
-      padding: const EdgeInsets.all(16),
       margin: _margin,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Transform.translate(
-            offset: Offset(0, -7),
-            child: Icon(
-              WeatherIcons.day_haze,
-              color: Colors.blueGrey.shade200,
-              size: 36,
-            ),
-          ),
-          const SizedBox(width: 20),
-          Expanded(
-            flex: 2,
-            child: Column(
+      child: Material(
+        type: MaterialType.transparency,
+        borderRadius: BorderRadius.circular(kBorderRadius),
+        child: InkWell(
+          onTap: () {
+//            Navigator.push(
+//              context,
+//              MaterialPageRoute(
+//                builder: (context) => _WeatherScreen(),
+//              ),
+//            );
+          },
+          borderRadius: BorderRadius.circular(kBorderRadius),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                Text(
-                  '36°C in Fujairah',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 12),
+                Transform.translate(
+                  offset: Offset(0, -7),
+                  child: Icon(
+                    WeatherIcons.day_haze,
+                    color: Colors.blueGrey.shade200,
+                    size: 36,
+                  ),
                 ),
-                Text(
-                  'Haze',
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        fontSize: 12,
-                        color: Colors.grey[900].withOpacity(0.4),
-                        letterSpacing: -0.2,
+                const SizedBox(width: 20),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        '36°C in Fujairah',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            .copyWith(fontSize: 12),
                       ),
+                      Text(
+                        'Haze',
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                              fontSize: 12,
+                              color: Colors.grey[900].withOpacity(0.4),
+                              letterSpacing: -0.2,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
+                const SizedBox(width: 20),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        '37° / 29°',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            .copyWith(fontSize: 12),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Icon(
+                            MdiIcons.umbrella,
+                            size: 14,
+                            color: Colors.black.withOpacity(0.35),
+                          ),
+                          const SizedBox(width: 2),
+                          Text(
+                            '0% today',
+                            style:
+                                Theme.of(context).textTheme.bodyText2.copyWith(
+                                      fontSize: 12,
+                                      color: Colors.grey[900].withOpacity(0.4),
+                                      letterSpacing: -0.2,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
-          const SizedBox(width: 20),
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Text(
-                  '37° / 29°',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 12),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Icon(
-                      MdiIcons.umbrella,
-                      size: 14,
-                      color: Colors.black.withOpacity(0.35),
-                    ),
-                    const SizedBox(width: 2),
-                    Text(
-                      '0% today',
-                      style: Theme.of(context).textTheme.bodyText2.copyWith(
-                            fontSize: 12,
-                            color: Colors.grey[900].withOpacity(0.4),
-                            letterSpacing: -0.2,
-                          ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
@@ -837,9 +854,10 @@ class _DailyLifeDuringCOVID extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DailyLifeDuringCovidScreen(
-                                title: _itemText[index],
-                              )),
+                        builder: (context) => DailyLifeDuringCovidScreen(
+                          title: _itemText[index],
+                        ),
+                      ),
                     );
                   },
                   child: Card(
@@ -977,54 +995,56 @@ class DailyLifeDuringCovidScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _AnnotatedRegion(
-      child: Scaffold(
-          backgroundColor: Colors.white,
-          body: CustomScrollView(
-            shrinkWrap: false,
-            slivers: <Widget>[
-              SliverAppBar(
-                backgroundColor: Colors.white,
-                brightness: Brightness.light,
-                iconTheme: Theme.of(context).iconTheme.copyWith(
+    return Scaffold(
+        endDrawer: Drawer(
+          child: Text('asdfasdf'),
+        ),
+        backgroundColor: Colors.white,
+        body: CustomScrollView(
+          shrinkWrap: false,
+          slivers: <Widget>[
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              brightness: Brightness.light,
+              iconTheme: Theme.of(context).iconTheme.copyWith(
+                    color: Colors.grey[900],
+                  ),
+              title: Text(
+                title,
+                style: Theme.of(context).textTheme.headline6.copyWith(
                       color: Colors.grey[900],
+                      fontSize: 16,
                     ),
-                title: Text(
-                  title,
-                  style: Theme.of(context).textTheme.headline6.copyWith(
-                        color: Colors.grey[900],
-                        fontSize: 16,
-                      ),
-                ),
-                titleSpacing: 0.0,
-                pinned: false,
-                floating: true,
               ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    if (index % 3 == 0) {
-                      return _SmallCard(
-                        title: 'The big brown fox jumped over the lazy dog',
-                        relativeDate: '2 hours ago',
-                        orgName: '$index Company',
-                        iconData: Icons.code,
-                        content: kLoremIpsum,
-                      );
-                    }
-
-                    return _BigCard(
+              titleSpacing: 0.0,
+              pinned: false,
+              floating: true,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  if (index % 3 == 0) {
+                    return _SmallCard(
                       title: 'The big brown fox jumped over the lazy dog',
                       relativeDate: '2 hours ago',
                       orgName: '$index Company',
                       iconData: Icons.code,
                       content: kLoremIpsum,
                     );
-                  },
-                ),
-              )
-            ],
-          )),
-    );
+                  }
+
+                  return _BigCard(
+                    title: 'The big brown fox jumped over the lazy dog',
+                    relativeDate: '2 hours ago',
+                    orgName: '$index Company',
+                    iconData: Icons.code,
+                    content: kLoremIpsum,
+                  );
+                },
+              ),
+            )
+          ],
+        ));
   }
 }
+

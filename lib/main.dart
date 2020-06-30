@@ -4,6 +4,7 @@ import 'package:animations/animations.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:axxilla_demo/ui/screens/settings_page.dart';
 import 'package:axxilla_demo/ui/screens/studies_screen.dart';
+import 'package:axxilla_demo/ui/widgets/default_annotated_region.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,8 @@ Future<void> main() async {
   };
 
   runZonedGuarded<Future<Null>>(() async {
-    initializeDateFormatting().then((_) => runApp(
+    initializeDateFormatting().then((_) =>
+        runApp(
           MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => RowSettings()),
@@ -118,74 +120,82 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      body: PageTransitionSwitcher(
-        transitionBuilder: (
-          Widget child,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation,
-        ) {
-          return FadeThroughTransition(
-            animation: animation,
-            secondaryAnimation: secondaryAnimation,
-            child: child,
-          );
-        },
-        child: pageList[_selectedIndex],
-      ),
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 20,
-              color: Colors.grey.withOpacity(.1),
-            ),
-            BoxShadow(
-              blurRadius: 10,
-              color: Colors.grey.withOpacity(.1),
-              offset: Offset(2, 2),
-            ),
-          ],
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: GNav(
-                gap: 20,
-                activeColor: Colors.white,
-                iconSize: 24,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                duration: Duration(milliseconds: 350),
-                tabBackgroundColor: Colors.grey[800],
-                tabs: [
-                  GButton(
-                    icon: LineAwesomeIcons.home,
-                    text: 'Home',
-                    curve: Curves.decelerate,
-                  ),
-                  GButton(
-                    icon: LineAwesomeIcons.fax,
-                    text: 'Likes',
-                  ),
-                  GButton(
-                    icon: LineAwesomeIcons.search,
-                    text: 'Search',
-                  ),
-                ],
-                selectedIndex: _selectedIndex,
-                onTabChange: (index) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                }),
-          ),
-        ),
-      ),
+      extendBody: false,
+      body: StudiesScreen(),
     );
   }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      extendBody: true,
+//      body: PageTransitionSwitcher(
+//        transitionBuilder: (
+//          Widget child,
+//          Animation<double> animation,
+//          Animation<double> secondaryAnimation,
+//        ) {
+//          return FadeThroughTransition(
+//            animation: animation,
+//            secondaryAnimation: secondaryAnimation,
+//            child: child,
+//          );
+//        },
+//        child: pageList[_selectedIndex],
+//      ),
+//      bottomNavigationBar: Container(
+//        margin: const EdgeInsets.all(8),
+//        decoration: BoxDecoration(
+//          borderRadius: BorderRadius.circular(100),
+//          color: Colors.white,
+//          boxShadow: [
+//            BoxShadow(
+//              blurRadius: 20,
+//              color: Colors.grey.withOpacity(.1),
+//            ),
+//            BoxShadow(
+//              blurRadius: 10,
+//              color: Colors.grey.withOpacity(.1),
+//              offset: Offset(2, 2),
+//            ),
+//          ],
+//        ),
+//        child: SafeArea(
+//          child: Padding(
+//            padding: const EdgeInsets.all(8),
+//            child: GNav(
+//                gap: 20,
+//                activeColor: Colors.white,
+//                iconSize: 24,
+//                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+//                duration: Duration(milliseconds: 350),
+//                tabBackgroundColor: Colors.grey[800],
+//                tabs: [
+//                  GButton(
+//                    icon: LineAwesomeIcons.home,
+//                    text: 'Home',
+//                    curve: Curves.decelerate,
+//                  ),
+//                  GButton(
+//                    icon: LineAwesomeIcons.fax,
+//                    text: 'Likes',
+//                  ),
+//                  GButton(
+//                    icon: LineAwesomeIcons.search,
+//                    text: 'Search',
+//                  ),
+//                ],
+//                selectedIndex: _selectedIndex,
+//                onTabChange: (index) {
+//                  setState(() {
+//                    _selectedIndex = index;
+//                  });
+//                }),
+//          ),
+//        ),
+//      ),
+//    );
+//  }
 }
 
 class RowSettings with ChangeNotifier, DiagnosticableTreeMixin {

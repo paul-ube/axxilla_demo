@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:axxilla_demo/core/constants/app_colors.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

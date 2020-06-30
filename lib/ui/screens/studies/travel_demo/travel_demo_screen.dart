@@ -7,6 +7,7 @@ import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_articles
 import 'package:axxilla_demo/ui/widgets/animations/open_container_animation/open_container_wrapper.dart';
 import 'package:axxilla_demo/ui/widgets/calendar/calendar_widget.dart';
 import 'package:axxilla_demo/ui/widgets/components/category_title.dart';
+import 'package:axxilla_demo/ui/widgets/default_annotated_region.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,18 +46,9 @@ class TravelDemoScreen extends StatelessWidget {
       _maxWidth = 600;
     }
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.light,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white70,
-        systemNavigationBarDividerColor: null,
-      ),
+    return DefaultAnnotatedRegion(
       child: Container(
         color: primaryBlue,
-
         child: SafeArea(
           child: Scaffold(
             primary: true,
