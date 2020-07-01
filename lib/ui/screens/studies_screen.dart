@@ -1,6 +1,6 @@
 import 'package:axxilla_demo/core/constants/app_colors.dart';
 import 'package:axxilla_demo/ui/screens/studies/google_discover_clone/discover_clone_screen.dart';
-import 'package:axxilla_demo/ui/screens/studies/google_discover_clone/weather_screen.dart';
+import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/overdrop_clone/weather_screen.dart';
 import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_screen.dart';
 import 'package:axxilla_demo/ui/widgets/cards/studies_card.dart';
 import 'package:flutter/material.dart';
