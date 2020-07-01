@@ -15,7 +15,8 @@ import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry/sentry.dart';
 
-import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/google_discover_clone.dart';
+//import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/google_discover_clone.dart';
+import 'ui/screens/studies/google_discover_clone.dart';
 
 SentryClient _sentry;
 
@@ -64,8 +65,7 @@ Future<void> main() async {
   };
 
   runZonedGuarded<Future<Null>>(() async {
-    initializeDateFormatting().then((_) =>
-        runApp(
+    initializeDateFormatting().then((_) => runApp(
           MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => RowSettings()),
