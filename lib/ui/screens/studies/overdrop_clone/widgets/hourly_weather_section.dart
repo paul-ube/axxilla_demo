@@ -1,5 +1,6 @@
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/overdrop_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'header.dart';
@@ -94,7 +95,7 @@ class __LineChartState extends State<_LineChart> {
 
       gridData: FlGridData(
         show: true,
-        drawVerticalLine: false,
+        drawVerticalLine: true,
         drawHorizontalLine: false,
         getDrawingHorizontalLine: (value) {
           return FlLine(
@@ -166,7 +167,7 @@ class __LineChartState extends State<_LineChart> {
       ),
       borderData: FlBorderData(
           show: false,
-          border: Border.all(color: const Color(0xff37434d), width: 1)),
+          border: Border.all(color: const Color(0xff37434d), width: 1, style: BorderStyle.none)),
       minX: 0,
       maxX: 7,
       minY: 30,
@@ -174,20 +175,24 @@ class __LineChartState extends State<_LineChart> {
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(0, 35),
-            FlSpot(2.6, 36),
-            FlSpot(4.9, 36),
-            FlSpot(6.8, 36),
-            FlSpot(8, 35),
-            FlSpot(9.5, 35),
-            FlSpot(11, 34),
+            FlSpot(1, 35),
+            FlSpot(2, 36),
+            FlSpot(3, 36),
+            FlSpot(4, 36),
+            FlSpot(5, 35),
+            FlSpot(6, 35),
+            FlSpot(7, 34),
           ],
           isCurved: true,
           colors: [OverDropColors.blue],
           barWidth: 3,
           isStrokeCapRound: true,
-          dotData: FlDotData(
+          aboveBarData: BarAreaData(
             show: true,
+            colors: [OverDropColors.background]
+          ),
+          dotData: FlDotData(
+            show: false,
           ),
           belowBarData: BarAreaData(
             show: true,
