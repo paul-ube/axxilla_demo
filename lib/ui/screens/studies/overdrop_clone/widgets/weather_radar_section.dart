@@ -14,16 +14,19 @@ class WeatherRadarSection extends StatelessWidget {
           child: Header(title: 'Weather radar', subtitle: 'Satellite images'),
         ),
         const SizedBox(height: 16),
-        Container(
-          margin: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-          width: double.infinity,
-          height: 200,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image: 'https://picsum.photos/id/1042/300/200',
-              fit: BoxFit.fitHeight,
+        AspectRatio(
+          aspectRatio: 1.684,
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+            width: double.infinity,
+            height: 200,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image: 'https://picsum.photos/id/1042/300/200',
+                fit: BoxFit.fitHeight,
+              ),
             ),
           ),
         ),

@@ -12,7 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/travel_demo/discover_things.dart';
+import 'discover_things.dart';
 
 class TravelDemoApp extends StatelessWidget {
   @override

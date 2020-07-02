@@ -1,9 +1,11 @@
 import 'package:axxilla_demo/core/constants/app_colors.dart';
 import 'package:axxilla_demo/ui/screens/studies/google_discover_clone/discover_clone_screen.dart';
-import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/overdrop_clone/weather_screen.dart';
 import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_screen.dart';
 import 'package:axxilla_demo/ui/widgets/cards/studies_card.dart';
+import 'package:axxilla_demo/ui/widgets/default_annotated_region.dart';
 import 'package:flutter/material.dart';
+
+import 'studies/overdrop_clone/weather_screen.dart';
 
 class StudiesScreen extends StatefulWidget {
   @override
@@ -92,8 +94,7 @@ class _StudiesScreenState extends State<StudiesScreen> {
             StudiesCard(
               destination: WeatherScreen(),
               title: 'Overdrop Clone',
-              subtitle:
-              'A weather forecasting application',
+              subtitle: 'A weather forecasting application',
               color: Colors.grey[800],
               textColor: Colors.white,
               assetImage: 'assets/landscape-2.png',

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:axxilla_demo/main.dart';
 import 'package:axxilla_demo/ui/widgets/cards/google_discover_card.dart';
-import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/widgets/logo_and_name_caption.dart';
+//import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/widgets/logo_and_name_caption.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -196,7 +196,3 @@ class _BottomSheet extends StatelessWidget {
     );
   }
 }
-
-
-
-

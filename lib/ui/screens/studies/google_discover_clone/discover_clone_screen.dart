@@ -6,7 +6,6 @@ import 'package:axxilla_demo/ui/widgets/components/square_image.dart';
 import 'package:axxilla_demo/ui/widgets/logo_and_name_caption.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:weather_icons/weather_icons.dart';
@@ -61,13 +60,40 @@ class _AnnotatedRegion extends StatelessWidget {
   }
 }
 
-class DiscoverClone extends StatelessWidget {
+class DiscoverClone extends StatefulWidget {
   const DiscoverClone();
+
+  @override
+  _DiscoverCloneState createState() => _DiscoverCloneState();
+}
+
+class _DiscoverCloneState extends State<DiscoverClone> {
+  @override
+  void dispose() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.transparent,
+    ));
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.white70,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white70,
+      systemNavigationBarDividerColor: null,
+    ));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+//      appBar: EmptyAppBar(),
       extendBody: true,
       body: ListView(
         padding: EdgeInsets.zero,
@@ -1047,4 +1073,3 @@ class DailyLifeDuringCovidScreen extends StatelessWidget {
         ));
   }
 }
-

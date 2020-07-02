@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class EmptyAppBar  extends StatelessWidget implements PreferredSizeWidget {
+class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
   static const double _defaultElevation = 4.0;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final AppBarTheme appBarTheme = AppBarTheme.of(context);
-    final Brightness brightness = appBarTheme.brightness
-        ?? themeData.primaryColorBrightness;
+    final Brightness brightness =
+        appBarTheme.brightness ?? themeData.primaryColorBrightness;
     final SystemUiOverlayStyle overlayStyle = brightness == Brightness.dark
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark;
@@ -16,12 +17,13 @@ class EmptyAppBar  extends StatelessWidget implements PreferredSizeWidget {
     return Semantics(
       container: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: overlayStyle,
+        value: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: Colors.white.withOpacity(0.7),
+          statusBarBrightness: Brightness.light,
+        ),
         child: Material(
-          color: appBarTheme.color
-              ?? themeData.primaryColor,
-          elevation: appBarTheme.elevation
-              ?? _defaultElevation,
+          color: appBarTheme.color ?? themeData.primaryColor,
+          elevation: appBarTheme.elevation ?? _defaultElevation,
           child: Semantics(
             explicitChildNodes: true,
             child: Container(),
@@ -30,6 +32,7 @@ class EmptyAppBar  extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
+
   @override
-  Size get preferredSize => Size(0.0,0.0);
+  Size get preferredSize => Size(0.0, 0.0);
 }
