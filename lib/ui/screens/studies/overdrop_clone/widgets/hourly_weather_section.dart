@@ -151,6 +151,9 @@ class __LineChartState extends State<_LineChart> {
 
     randomWinds = List.generate(allSpots.length, (index) {
       double abc = Random().nextInt(12).toDouble();
+      if (abc < 5) {
+        abc = 7;
+      }
       return FlSpot(index.toDouble(), abc);
     });
 
@@ -160,19 +163,24 @@ class __LineChartState extends State<_LineChart> {
   @override
   Widget build(BuildContext context) {
     List<FlSpot> _spot;
+    double maxY;
 
     switch (context.watch<SelectedIndex>().selectedIndex) {
       case (0):
         _spot = allSpots;
+        maxY = 38;
         break;
       case (1):
         _spot = randomWinds;
+        maxY = 15;
         break;
       case (2):
         _spot = allZero;
+        maxY = 12;
         break;
       default:
         _spot = allSpots;
+        maxY = 38;
     }
 
     final lineBarsData = [
@@ -302,7 +310,7 @@ class __LineChartState extends State<_LineChart> {
             minX: 0,
             maxX: allSpots.length.toDouble() - 1,
             minY: context.watch<SelectedIndex>().selectedIndex != 0 ? 0 : 31,
-            maxY: context.watch<SelectedIndex>().selectedIndex != 0 ? 12 : 38,
+            maxY: maxY,
             titlesData: FlTitlesData(
               leftTitles: SideTitles(
                 showTitles: false,
