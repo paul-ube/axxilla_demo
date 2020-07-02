@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:animations/animations.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
 import 'package:axxilla_demo/ui/screens/settings_page.dart';
+import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/change_notifier_provider.dart';
 import 'package:axxilla_demo/ui/screens/studies_screen.dart';
 import 'package:axxilla_demo/ui/widgets/default_annotated_region.dart';
 import 'package:flutter/cupertino.dart';
@@ -69,6 +70,7 @@ Future<void> main() async {
           MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => RowSettings()),
+              ChangeNotifierProvider(create: (_) => SelectedIndex()),
             ],
             child: MyApp(),
           ),

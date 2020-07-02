@@ -1,8 +1,10 @@
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/widgets/hourly_weather_section.dart';
+import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/widgets/this_week_section.dart';
 import 'package:flutter/material.dart';
 
 import 'overdrop_colors.dart';
 import 'widgets/detail_section.dart';
+import 'widgets/weather_radar_section.dart';
 
 class WeatherScreen extends StatelessWidget {
   @override
@@ -14,6 +16,7 @@ class WeatherScreen extends StatelessWidget {
         accentColor: Colors.grey[200],
       ),
       child: Scaffold(
+        backgroundColor: OverDropColors.background,
         body: SafeArea(
           top: false,
           child: CustomScrollView(
@@ -22,6 +25,9 @@ class WeatherScreen extends StatelessWidget {
               SliverAppBar(
                 automaticallyImplyLeading: false,
                 expandedHeight: 280,
+                title: Container(color: OverDropColors.background),
+                brightness: Brightness.dark,
+                pinned: false,
                 backgroundColor: Colors.transparent,
                 flexibleSpace: FlexibleSpaceBar(
                   collapseMode: CollapseMode.none,
@@ -29,7 +35,7 @@ class WeatherScreen extends StatelessWidget {
                     fit: StackFit.expand,
                     children: [
                       Container(
-                        color: Colors.deepOrange,
+                        color: OverDropColors.background,
                       )
 //                      Positioned(
 //                        bottom: -15,
@@ -64,6 +70,8 @@ class WeatherScreen extends StatelessWidget {
                         children: <Widget>[
                           DetailSection(),
                           HourlyWeatherSection(),
+                          WeatherRadarSection(),
+                          ThisWeekSection(),
                         ],
                       ),
                     );

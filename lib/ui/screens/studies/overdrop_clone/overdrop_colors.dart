@@ -7,4 +7,5 @@ class OverDropColors {
   static const Color active = Color.fromRGBO(255, 255, 255, 1);
   static const Color blue = Color.fromRGBO(92, 139, 220, 1);
   static const Color darkBlue = Color.fromRGBO(64, 85, 122, 1);
+  static const Color cardColor = Color.fromRGBO(69, 69, 74, 1);
 }

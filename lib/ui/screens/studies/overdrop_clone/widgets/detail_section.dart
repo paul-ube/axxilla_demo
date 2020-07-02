@@ -70,7 +70,7 @@ class _DetailSectionState extends State<DetailSection> {
             expanded: _ExpandedItems(),
             builder: (_, collapsed, expanded) {
               return Padding(
-                padding: const EdgeInsets.only(bottom: 40.0),
+                padding: const EdgeInsets.only(bottom: 38.0),
                 child: Expandable(
                   collapsed: collapsed,
                   expanded: expanded,
