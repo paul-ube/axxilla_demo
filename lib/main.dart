@@ -1,23 +1,17 @@
 import 'dart:async';
 
-import 'package:animations/animations.dart';
 import 'package:axxilla_demo/core/constants/constants.dart';
-import 'package:axxilla_demo/ui/screens/settings_page.dart';
+import 'package:axxilla_demo/routes.dart';
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/change_notifier_provider.dart';
 import 'package:axxilla_demo/ui/screens/studies_screen.dart';
-import 'package:axxilla_demo/ui/widgets/default_annotated_region.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry/sentry.dart';
-
-//import 'file:///C:/Users/Paul/AndroidStudioProjects/axxilla_demo/lib/ui/screens/studies/google_discover_clone.dart';
-import 'ui/screens/studies/google_discover_clone.dart';
 
 SentryClient _sentry;
 
@@ -83,22 +77,29 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Axxilla Demo',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        splashFactory: InkRipple.splashFactory,
-        appBarTheme: AppBarTheme(
-          color: kBackgroundColor,
-          elevation: 0,
-        ),
-        scaffoldBackgroundColor: kBackgroundColor,
-        pageTransitionsTheme: PageTransitionsTheme(builders: {
-          TargetPlatform.android: ZoomPageTransitionsBuilder(),
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-        }),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
       ),
-      home: MainScreen(),
+      child: MaterialApp(
+        title: 'Axxilla Demo',
+        theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          splashFactory: InkRipple.splashFactory,
+          primarySwatch: Colors.blueGrey,
+          appBarTheme: AppBarTheme(
+            color: kBackgroundColor,
+            elevation: 0,
+          ),
+          scaffoldBackgroundColor: kBackgroundColor,
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          }),
+        ),
+//        home: StudiesScreen(),
+        onGenerateRoute: RouteConfiguration.onGenerateRoute,
+      ),
     );
   }
 }
@@ -109,15 +110,15 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+//  int _selectedIndex = 0;
 
-  List<Widget> pageList = <Widget>[
-    StudiesScreen(),
-    GoogleDiscoverClone(
-      key: PageStorageKey(0),
-    ),
-    SettingsPage(),
-  ];
+//  List<Widget> pageList = <Widget>[
+//    StudiesScreen(),
+//    GoogleDiscoverClone(
+//      key: PageStorageKey(0),
+//    ),
+//    SettingsPage(),
+//  ];
 
   @override
   Widget build(BuildContext context) {

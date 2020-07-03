@@ -33,6 +33,8 @@ class GoogleDiscoverClone extends StatelessWidget {
   static const String homeRoute =
       'ui/screens/studies/google_discover_clone/discover_clone_screen.dart';
 
+  const GoogleDiscoverClone();
+
   @override
   Widget build(BuildContext context) {
     return DiscoverClone();
@@ -76,97 +78,88 @@ class _DiscoverCloneState extends State<DiscoverClone> {
     super.dispose();
   }
 
-  @override
-  void initState() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.white70,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: Colors.white70,
-      systemNavigationBarDividerColor: null,
-    ));
-    super.initState();
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return _AnnotatedRegion(
+      child: Scaffold(
+        backgroundColor: Colors.white,
 //      appBar: EmptyAppBar(),
-      extendBody: true,
-      body: ListView(
-        padding: EdgeInsets.zero,
-        shrinkWrap: true,
-        addAutomaticKeepAlives: true,
-        children: <Widget>[
-          const SizedBox(height: 54),
-          _CustomAppBar(),
-          const SizedBox(height: 16),
-          _WeatherCard(),
-          _SmallCard(
-            title: 'This is a wide card inspired by Google Feed',
-            content: kLoremIpsum,
-            orgName: 'Google',
-            relativeDate: '20 hours ago',
-          ),
-          _BigCard(
-            content: kLoremIpsum,
-            title: 'This is a big card inspired by Google Discover',
-            iconData: MdiIcons.google,
-            orgName: 'Google',
-            relativeDate: '1 month ago',
-          ),
-          _BigCard(
-            content: kLoremIpsum,
-            title: 'This is a big card inspired by Google Discover',
-            iconData: MdiIcons.google,
-            orgName: 'Google',
-            relativeDate: '1 month ago',
-            inCaseYouMissedIt: true,
-          ),
-          _SmallCard(
-            title:
-                'iLTW Apologises To Xcalibur For His Remarks in The Pub Game',
-            content: 'Virtus Pro carry iLTW made a public apology on his social'
-                ' media page for his toxic behaviour in the pub '
-                'game yesterday against Xcalibur',
-            iconData: Icons.translate,
-            relativeDate: '4 hours ago',
-            orgName: 'AFK Gaming',
-            inCaseYouMissedIt: true,
-          ),
-          _MultiRowCard(),
-          _BigCard(
-            content: kLoremIpsum,
-            title: 'This is a big card inspired by Google Discover',
-            iconData: MdiIcons.google,
-            orgName: 'Google',
-            relativeDate: '1 month ago',
-          ),
-          _DailyLifeDuringCOVID(),
-          _BigCard(
-            content: kLoremIpsum,
-            title: 'This is a big card inspired by Google Discover',
-            iconData: MdiIcons.google,
-            orgName: 'Google',
-            relativeDate: '1 month ago',
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List<Widget>.generate(
-              4,
-              (index) => _SmallCard(
-                title: 'This is a wide card inspired by Google Feed',
-                content: kLoremIpsum,
-                orgName: 'Google',
-                relativeDate: '20 hours ago',
+        extendBody: true,
+        body: ListView(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          addAutomaticKeepAlives: true,
+          children: <Widget>[
+            const SizedBox(height: 54),
+            _CustomAppBar(),
+            const SizedBox(height: 16),
+            _WeatherCard(),
+            _SmallCard(
+              title: 'This is a wide card inspired by Google Feed',
+              content: kLoremIpsum,
+              orgName: 'Google',
+              relativeDate: '20 hours ago',
+            ),
+            _BigCard(
+              content: kLoremIpsum,
+              title: 'This is a big card inspired by Google Discover',
+              iconData: MdiIcons.google,
+              orgName: 'Google',
+              relativeDate: '1 month ago',
+            ),
+            _BigCard(
+              content: kLoremIpsum,
+              title: 'This is a big card inspired by Google Discover',
+              iconData: MdiIcons.google,
+              orgName: 'Google',
+              relativeDate: '1 month ago',
+              inCaseYouMissedIt: true,
+            ),
+            _SmallCard(
+              title:
+                  'iLTW Apologises To Xcalibur For His Remarks in The Pub Game',
+              content: 'Virtus Pro carry iLTW made a public apology on his social'
+                  ' media page for his toxic behaviour in the pub '
+                  'game yesterday against Xcalibur',
+              iconData: Icons.translate,
+              relativeDate: '4 hours ago',
+              orgName: 'AFK Gaming',
+              inCaseYouMissedIt: true,
+            ),
+            _MultiRowCard(),
+            _BigCard(
+              content: kLoremIpsum,
+              title: 'This is a big card inspired by Google Discover',
+              iconData: MdiIcons.google,
+              orgName: 'Google',
+              relativeDate: '1 month ago',
+            ),
+            _DailyLifeDuringCOVID(),
+            _BigCard(
+              content: kLoremIpsum,
+              title: 'This is a big card inspired by Google Discover',
+              iconData: MdiIcons.google,
+              orgName: 'Google',
+              relativeDate: '1 month ago',
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List<Widget>.generate(
+                4,
+                (index) => _SmallCard(
+                  title: 'This is a wide card inspired by Google Feed',
+                  content: kLoremIpsum,
+                  orgName: 'Google',
+                  relativeDate: '20 hours ago',
+                ),
               ),
             ),
-          ),
-          _MoreStories(),
-        ],
+            _MoreStories(),
+          ],
+        ),
       ),
     );
   }
@@ -1022,9 +1015,6 @@ class DailyLifeDuringCovidScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        endDrawer: Drawer(
-          child: Text('asdfasdf'),
-        ),
         backgroundColor: Colors.white,
         body: CustomScrollView(
           shrinkWrap: false,

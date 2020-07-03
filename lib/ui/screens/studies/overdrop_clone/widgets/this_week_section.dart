@@ -9,7 +9,7 @@ import 'header.dart';
 
 class ThisWeekSection extends StatelessWidget {
   final List<DateTime> _7DaysAhead =
-      List.generate(7, (index) => DateTime.now().add(Duration(days: index)));
+      List.generate(7, (index) => DateTime.now().add(Duration(days: index+1)));
 
   final List<_HeaderItemData> _headerData = [
     _HeaderItemData('4%', '38° | 32°'),

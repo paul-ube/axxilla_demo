@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class SliverAppBarTitle extends StatefulWidget {
   final Widget child;
 

@@ -38,6 +38,8 @@ class TravelDemoScreen extends StatelessWidget {
         'Discover unique things to do around you. Once in a lifetime adventure starts here.'),
   ];
 
+  const TravelDemoScreen();
+
   @override
   Widget build(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
@@ -54,6 +56,8 @@ class TravelDemoScreen extends StatelessWidget {
             primary: true,
             appBar: AppBar(
               title: Text('Travel Demo'),
+              backgroundColor: primaryBlue,
+              automaticallyImplyLeading: false,
             ),
             backgroundColor: Colors.white,
             body: SingleChildScrollView(

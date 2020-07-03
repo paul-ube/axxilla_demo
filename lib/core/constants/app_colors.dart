@@ -6,3 +6,5 @@ Color lightestBlue = Color.fromRGBO(185, 210, 254, 1);
 Color accentBlue = Color.fromRGBO(125, 173, 254, 1);
 Color captionTextColor = Color.fromRGBO(208, 210, 221, 1);
 Color primaryTextColor = Color.fromRGBO(158, 162, 179, 1);
+
+Color axxillaBG = Color.fromRGBO(51, 51, 51, 1);

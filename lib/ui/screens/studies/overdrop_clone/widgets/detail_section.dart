@@ -43,7 +43,7 @@ class _DetailSectionState extends State<DetailSection> {
                 iconPadding: const EdgeInsets.only(right: 16, top: 24),
               ),
               header: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                padding: const EdgeInsets.fromLTRB(24, 9, 24, 0),
                 child: Header(
                   title: 'Details',
                   subtitle: 'Weather now',
