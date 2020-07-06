@@ -29,7 +29,7 @@ dependencies:
   expandable: ^4.1.4
 
   fl_chart: ^0.10.1
-  flutter_boxicons: ^1.1.0
+#  flutter_boxicons: ^1.1.0
   flutter_feather_icons: ^1.0.3
   flutter_dotenv: ^2.1.0
   flutter_statusbarcolor: ^0.2.3
@@ -64,7 +64,7 @@ flutter_icons:
   android: true
   ios: true
   adaptive_icon_background: "#333"
-  adaptive_icon_foreground: "assets/axxilla_logo.png"
+  adaptive_icon_foreground: "assets/adaptive_axxilla_logo.png"
 
 
 # For information on the generic Dart part of this file, see the
@@ -97,7 +97,6 @@ flutter:
      - assets/landscape-7.png
      - assets/landscape-8.png
      - assets/axxilla_logo.png
-     - assets/introduction_image0.jpg
      - .env
 
 

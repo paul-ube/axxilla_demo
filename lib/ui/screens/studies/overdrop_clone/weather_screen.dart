@@ -1,3 +1,4 @@
+import 'package:axxilla_demo/core/functions/url_launcher.dart';
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/widgets/hourly_weather_section.dart';
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/widgets/this_week_section.dart';
 import 'package:flutter/cupertino.dart';
@@ -173,6 +174,25 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       HourlyWeatherSection(),
                       WeatherRadarSection(),
                       ThisWeekSection(),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            launchURL(Uri.encodeFull(
+                                'https://play.google.com/store/apps/details?id=widget.dd.com.overdrop.free&hl=en'));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              'Inspired by OverDrop',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2
+                                  .apply(color: OverDropColors.subText),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 40),
                     ],
                   ),
                 );

@@ -3,6 +3,7 @@ import 'package:axxilla_demo/core/functions/url_launcher.dart';
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/overdrop_colors.dart';
 import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_screen.dart';
 import 'package:axxilla_demo/ui/widgets/cards/studies_card.dart';
+import 'package:axxilla_demo/ui/widgets/remove_scroll_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -23,8 +24,6 @@ class _StudiesScreenState extends State<StudiesScreen> {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +37,11 @@ class _StudiesScreenState extends State<StudiesScreen> {
       ),
       body: SafeArea(
 //        top: false,
-        child: ListView(
-          padding: const EdgeInsets.all(0),
-          children: <Widget>[
+        child: ScrollConfiguration(
+          behavior: NoScrollGlow(),
+          child: ListView(
+            padding: const EdgeInsets.all(0),
+            children: <Widget>[
 //          OpenContainerWrapper(
 //              destination: TravelDemoScreen(),
 //              closedColor: Colors.white,
@@ -85,31 +86,32 @@ class _StudiesScreenState extends State<StudiesScreen> {
 //                  ),
 //                );
 //              }),
-            StudiesCard(
-              destination: RoutePaths.travel,
-              title: 'Travel App UI',
-              subtitle: 'A travel app ui inspired by figma',
-              color: primaryBlue,
-              assetImage: 'assets/landscape-4.png',
-            ),
-            StudiesCard(
-              destination: RoutePaths.discover,
-              title: 'Google Discover and News Clone',
-              subtitle:
-                  'Cloning of cards present in Google Discover and News App',
-              color: Colors.white,
-              textColor: Colors.grey.shade900,
-              assetImage: 'assets/portrait-5.png',
-            ),
-            StudiesCard(
-              destination: RoutePaths.weather,
-              title: 'Overdrop Clone',
-              subtitle: 'A weather forecasting application',
-              color: OverDropColors.background,
-              textColor: Colors.white,
-              assetImage: 'assets/landscape-2.png',
-            )
-          ],
+              StudiesCard(
+                destination: RoutePaths.travel,
+                title: 'Travel App UI',
+                subtitle: 'A travel app ui inspired by figma',
+                color: primaryBlue,
+                assetImage: 'assets/landscape-4.png',
+              ),
+              StudiesCard(
+                destination: RoutePaths.discover,
+                title: 'Google Discover and News Clone',
+                subtitle:
+                    'Cloning of cards present in Google Discover and News App',
+                color: Colors.white,
+                textColor: Colors.grey.shade900,
+                assetImage: 'assets/portrait-5.png',
+              ),
+              StudiesCard(
+                destination: RoutePaths.weather,
+                title: 'Overdrop Clone',
+                subtitle: 'A weather forecasting application',
+                color: OverDropColors.background,
+                textColor: Colors.white,
+                assetImage: 'assets/landscape-2.png',
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -129,120 +131,137 @@ class _EndDrawer extends StatelessWidget {
     return Drawer(
       child: SafeArea(
         top: false,
-        child: Container(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            children: <Widget>[
-              DrawerHeader(
-                child: Container(
-                  child: Theme(
-                    data: Theme.of(context).copyWith(
-                      textTheme: GoogleFonts.poppinsTextTheme(),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/axxilla_logo.png',
-                          height: 50,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: ScrollConfiguration(
+                behavior: NoScrollGlow(),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    DrawerHeader(
+                      child: Container(
+                        child: Theme(
+                          data: Theme.of(context).copyWith(
+                            textTheme: GoogleFonts.poppinsTextTheme(),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset(
+                                'assets/axxilla_logo.png',
+                                height: 50,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    'Axxilla',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4
+                                        .apply(
+                                          color: Colors.white,
+                                        ),
+                                  ),
+                                  Text(
+                                    'IT Solutions',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline6
+                                        .apply(
+                                          color: Colors.white,
+                                        ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Axxilla',
-                              style:
-                                  Theme.of(context).textTheme.headline4.apply(
-                                        color: Colors.white,
-                                      ),
-                            ),
-                            Text(
-                              'IT Solutions',
-                              style:
-                                  Theme.of(context).textTheme.headline6.apply(
-                                        color: Colors.white,
-                                      ),
-                            )
-                          ],
-                        )
-                      ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: axxillaBG,
+                      ),
+                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
                     ),
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: axxillaBG,
-                ),
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-              ),
-              _CustomTile(
-                title: 'Contact Us',
-                leadingIcon: Icons.phone_android,
-                onTap: () async {
-                  await launchURL('tel:0566471717');
-                },
-              ),
-              _CustomTile(
-                title: 'WhatsApp',
-                leadingIcon: MdiIcons.whatsapp,
-                onTap: () async {
-                  await launchURL('whatsapp://send?phone=0566471717');
-                },
-              ),
-              _CustomTile(
-                title: 'Email',
-                subtitle: 'info@axxilla.com',
-                leadingIcon: Icons.mail_outline,
-                onTap: () async {
-                  await launchURL(
-                    Uri.encodeFull('mailto:info@axxilla.com'),
-                  );
-                },
-              ),
-              Divider(
-                endIndent: 16,
-                indent: 16,
-              ),
-              _CustomTile(
-                title: 'Visit Website',
-                leadingIcon: MdiIcons.web,
-                onTap: () async {
-                  await launchURL('http://www.axxilla.com/');
-                },
-              ),
-              _CustomTile(
-                title: 'Visit on Facebook',
-                leadingIcon: MdiIcons.facebook,
-                onTap: () async {
-                  await launchURL(
-                      'https://www.facebook.com/axxilla.solutions/?modal=admin_todo_tour');
-                },
-              ),
-              Divider(
-                endIndent: 16,
-                indent: 16,
-              ),
-              _CustomAboutTile(
-                title: 'About Axxilla Demo',
-                icon: Image.asset(
-                  'assets/axxilla_logo.png',
-                  height: 24,
-                  color: Colors.grey[700],
-                ),
-                applicationIcon: Image.asset(
-                  'assets/axxilla_logo.png',
-                  height: 32,
-                  color: Colors.grey[700],
+                    _CustomTile(
+                      title: 'Contact Us',
+                      leadingIcon: Icons.phone_android,
+                      onTap: () async {
+                        await launchURL('tel:0566471717');
+                      },
+                    ),
+                    _CustomTile(
+                      title: 'WhatsApp',
+                      leadingIcon: MdiIcons.whatsapp,
+                      onTap: () async {
+                        await launchURL('whatsapp://send?phone=0566471717');
+                      },
+                    ),
+                    _CustomTile(
+                      title: 'Email',
+                      subtitle: 'info@axxilla.com',
+                      leadingIcon: Icons.mail_outline,
+                      onTap: () async {
+                        await launchURL(
+                          Uri.encodeFull('mailto:info@axxilla.com'),
+                        );
+                      },
+                    ),
+                    Divider(
+                      endIndent: 16,
+                      indent: 16,
+                    ),
+                    _CustomTile(
+                      title: 'Visit Website',
+                      leadingIcon: MdiIcons.web,
+                      onTap: () async {
+                        await launchURL('http://www.axxilla.com/');
+                      },
+                    ),
+                    _CustomTile(
+                      title: 'Visit on Facebook',
+                      leadingIcon: MdiIcons.facebook,
+                      onTap: () async {
+                        await launchURL(
+                            'https://www.facebook.com/axxilla.solutions/?modal=admin_todo_tour');
+                      },
+                    ),
+                    Divider(
+                      endIndent: 16,
+                      indent: 16,
+                    ),
+                    _CustomAboutTile(
+                      title: 'About Axxilla Demo',
+                      icon: Image.asset(
+                        'assets/axxilla_logo.png',
+                        height: 24,
+                        color: Colors.grey[700],
+                      ),
+                      applicationIcon: Image.asset(
+                        'assets/axxilla_logo.png',
+                        height: 32,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 16),
+                child: Text('© Axxilla IT Solutions by HSEPro FZE',
+                    style: Theme.of(context).textTheme.caption)),
+          ],
         ),
       ),
     );
