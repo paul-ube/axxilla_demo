@@ -15,7 +15,7 @@ class DefaultAnnotatedRegion extends StatelessWidget {
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
         systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white70,
+        systemNavigationBarColor: Colors.transparent,
         systemNavigationBarDividerColor: null,
       ),
       child: child,

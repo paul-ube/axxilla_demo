@@ -178,12 +178,10 @@ class _StudyWrapperState extends State<StudyWrapper> {
 //              sortKey: const OrdinalSortKey(0),
               label: 'Back',
               button: true,
-
               excludeSemantics: true,
               child: FloatingActionButton.extended(
                 backgroundColor: axxillaBG,
                 key: const ValueKey('Back'),
-
                 onPressed: () {
                   Navigator.of(context)
                       .popUntil((route) => route.settings.name == '/');

@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: Colors.red,
       ),
       child: MaterialApp(
         title: 'Axxilla Demo',

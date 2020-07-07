@@ -991,6 +991,7 @@ class _MoreStories extends StatelessWidget {
                   icon: Icon(Icons.arrow_forward),
                   iconSize: 24,
                   color: Colors.black38,
+                  onPressed: () {},
                 ),
                 const SizedBox(width: 8),
                 Text('More stories',

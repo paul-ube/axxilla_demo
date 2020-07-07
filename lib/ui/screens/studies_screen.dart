@@ -3,6 +3,7 @@ import 'package:axxilla_demo/core/functions/url_launcher.dart';
 import 'package:axxilla_demo/ui/screens/studies/overdrop_clone/overdrop_colors.dart';
 import 'package:axxilla_demo/ui/screens/studies/travel_demo/travel_demo_screen.dart';
 import 'package:axxilla_demo/ui/widgets/cards/studies_card.dart';
+import 'package:axxilla_demo/ui/widgets/default_annotated_region.dart';
 import 'package:axxilla_demo/ui/widgets/remove_scroll_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,97 +21,55 @@ class StudiesScreen extends StatefulWidget {
 class _StudiesScreenState extends State<StudiesScreen> {
   @override
   void initState() {
-    Future.microtask(() => TravelDemoScreen());
+//    Future.microtask(() => TravelDemoScreen());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawerEnableOpenDragGesture: false,
-      endDrawer: _EndDrawer(axxillaBG: axxillaBG),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        textTheme: GoogleFonts.poppinsTextTheme(),
-        title: _AxxillaLogo(),
-        backgroundColor: axxillaBG,
-      ),
-      body: SafeArea(
+    return DefaultAnnotatedRegion(
+      child: Scaffold(
+        endDrawerEnableOpenDragGesture: false,
+        endDrawer: _EndDrawer(axxillaBG: axxillaBG),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          textTheme: GoogleFonts.poppinsTextTheme(),
+          title: _AxxillaLogo(),
+          backgroundColor: axxillaBG,
+        ),
+        body: SafeArea(
 //        top: false,
-        child: ScrollConfiguration(
-          behavior: NoScrollGlow(),
-          child: ListView(
-            padding: const EdgeInsets.all(0),
-            children: <Widget>[
-//          OpenContainerWrapper(
-//              destination: TravelDemoScreen(),
-//              closedColor: Colors.white,
-//              closedBuilder: (BuildContext _, VoidCallback openContainer) {
-//                return InkWellOverlay(
-//                  openContainer: openContainer,
-//                  height: 300,
-//                  child: Column(
-//                    crossAxisAlignment: CrossAxisAlignment.stretch,
-//                    children: <Widget>[
-//                      Expanded(
-//                        child: Container(
-//                          color: Colors.black38,
-//                          child: Center(
-//                            child: Image.asset(
-//                              'assets/portrait-9.png',
-//                              width: 100,
-//                            ),
-//                          ),
-//                        ),
-//                      ),
-//                      const ListTile(
-//                        title: Text('Title'),
-//                        subtitle: Text('Secondary text'),
-//                      ),
-//                      Padding(
-//                        padding: const EdgeInsets.only(
-//                          left: 16.0,
-//                          right: 16.0,
-//                          bottom: 16.0,
-//                        ),
-//                        child: Text(
-//                          'Lorem ipsum dolor sit amet, consectetur '
-//                          'adipiscing elit, sed do eiusmod tempor.',
-//                          style: Theme.of(context)
-//                              .textTheme
-//                              .bodyText2
-//                              .copyWith(color: Colors.black54),
-//                        ),
-//                      ),
-//                    ],
-//                  ),
-//                );
-//              }),
-              StudiesCard(
-                destination: RoutePaths.travel,
-                title: 'Travel App UI',
-                subtitle: 'A travel app ui inspired by figma',
-                color: primaryBlue,
-                assetImage: 'assets/landscape-4.png',
-              ),
-              StudiesCard(
-                destination: RoutePaths.discover,
-                title: 'Google Discover and News Clone',
-                subtitle:
-                    'Cloning of cards present in Google Discover and News App',
-                color: Colors.white,
-                textColor: Colors.grey.shade900,
-                assetImage: 'assets/portrait-5.png',
-              ),
-              StudiesCard(
-                destination: RoutePaths.weather,
-                title: 'Overdrop Clone',
-                subtitle: 'A weather forecasting application',
-                color: OverDropColors.background,
-                textColor: Colors.white,
-                assetImage: 'assets/landscape-2.png',
-              )
-            ],
+          child: ScrollConfiguration(
+            behavior: NoScrollGlow(),
+            child: ListView(
+              padding: const EdgeInsets.all(0),
+              children: <Widget>[
+                StudiesCard(
+                  destination: RoutePaths.travel,
+                  title: 'Travel App UI',
+                  subtitle: 'A travel app ui inspired by figma',
+                  color: primaryBlue,
+                  assetImage: 'assets/landscape-4.png',
+                ),
+                StudiesCard(
+                  destination: RoutePaths.discover,
+                  title: 'Google Discover and News Clone',
+                  subtitle:
+                  'Cloning of cards present in Google Discover and News App',
+                  color: Colors.white,
+                  textColor: Colors.grey.shade900,
+                  assetImage: 'assets/portrait-5.png',
+                ),
+                StudiesCard(
+                  destination: RoutePaths.weather,
+                  title: 'Overdrop Clone',
+                  subtitle: 'A weather forecasting application',
+                  color: OverDropColors.background,
+                  textColor: Colors.white,
+                  assetImage: 'assets/landscape-2.png',
+                )
+              ],
+            ),
           ),
         ),
       ),

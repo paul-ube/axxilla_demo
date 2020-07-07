@@ -37,108 +37,117 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: OverDropColors.background,
+        systemNavigationBarDividerColor: null,
+      ),
+      child: Theme(
+        data: Theme.of(context).copyWith(
 //        textTheme: GoogleFonts.montserratTextTheme(),
-        primaryColor: Colors.grey[800],
-        accentColor: Colors.grey[800],
+          primaryColor: Colors.grey[800],
+          accentColor: Colors.grey[800],
 //            canvasColor: OverDropColors.background,
 //          brightness: Brightness.dark,
-        backgroundColor: OverDropColors.background,
-        scaffoldBackgroundColor: OverDropColors.background,
+          backgroundColor: OverDropColors.background,
+          scaffoldBackgroundColor: OverDropColors.background,
 //          appBarTheme: Theme.of(context)
 //              .appBarTheme
 //              .copyWith(brightness: Brightness.dark),
-      ),
-      child: Scaffold(
-        body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: false,
-          slivers: <Widget>[
-            SliverAppBar(
-              stretch: true,
-              automaticallyImplyLeading: false,
-              expandedHeight: 280,
-              elevation: 0,
-              pinned: false,
-              backgroundColor: OverDropColors.background,
-              flexibleSpace: FlexibleSpaceBar(
-                collapseMode: CollapseMode.pin,
-                stretchModes: <StretchMode>[
-                  StretchMode.zoomBackground,
+        ),
+        child: Scaffold(
+          body: CustomScrollView(
+            physics: BouncingScrollPhysics(),
+            shrinkWrap: false,
+            slivers: <Widget>[
+              SliverAppBar(
+                stretch: true,
+                automaticallyImplyLeading: false,
+                expandedHeight: 280,
+                elevation: 0,
+                pinned: false,
+                backgroundColor: OverDropColors.background,
+                flexibleSpace: FlexibleSpaceBar(
+                  collapseMode: CollapseMode.pin,
+                  stretchModes: <StretchMode>[
+                    StretchMode.zoomBackground,
 //                    StretchMode.blurBackground,
 //                    StretchMode.fadeTitle,
-                ],
-                background: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/portrait-8.png'),
-                              fit: BoxFit.cover,
+                  ],
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/portrait-8.png'),
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24, 54, 16, 0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      _Temperature(),
-                                      FloatingActionButton(
-                                        heroTag: 'no-tag',
-                                        mini: true,
-                                        onPressed: () {},
-                                        backgroundColor:
-                                            OverDropColors.background,
-                                        child: Icon(
-                                          Icons.more_vert,
-                                          color: OverDropColors.active,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  Text(
-                                    'Fujairah • Humid and Partly Cloudy',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subtitle2
-                                        .copyWith(
-                                          color: OverDropColors.active,
-                                          fontSize: 18,
-                                        ),
-                                  ),
-                                ],
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24, 54, 16, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        _Temperature(),
+                                        FloatingActionButton(
+                                          heroTag: 'no-tag',
+                                          mini: true,
+                                          onPressed: () {},
+                                          backgroundColor:
+                                              OverDropColors.background,
+                                          child: Icon(
+                                            Icons.more_vert,
+                                            color: OverDropColors.active,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Text(
+                                      'Fujairah • Humid and Partly Cloudy',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2
+                                          .copyWith(
+                                            color: OverDropColors.active,
+                                            fontSize: 18,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: -15,
-                          left: 0,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              color: OverDropColors.background,
-                              borderRadius: BorderRadius.circular(13),
+                          Positioned(
+                            bottom: -15,
+                            left: 0,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: OverDropColors.background,
+                                borderRadius: BorderRadius.circular(13),
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    )
+                          )
+                        ],
+                      )
 //                      Positioned(
 //                        bottom: -15,
 //                        left: 0,
@@ -151,54 +160,55 @@ class _WeatherScreenState extends State<WeatherScreen> {
 //                          ),
 //                        ),
 //                      )
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SliverList(
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext context, int index) {
-                return Container(
-                  decoration: BoxDecoration(
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return Container(
+                    decoration: BoxDecoration(
 //                          borderRadius: BorderRadius.only(
 //                            topLeft: Radius.circular(15),
 //                            topRight: Radius.circular(15),
 //                          ),
-                    color: OverDropColors.background,
-                  ),
+                      color: OverDropColors.background,
+                    ),
 //                      padding: const EdgeInsets.fromLTRB(24, 15, 24, 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      DetailSection(),
-                      HourlyWeatherSection(),
-                      WeatherRadarSection(),
-                      ThisWeekSection(),
-                      Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            launchURL(Uri.encodeFull(
-                                'https://play.google.com/store/apps/details?id=widget.dd.com.overdrop.free&hl=en'));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              'Inspired by OverDrop',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle2
-                                  .apply(color: OverDropColors.subText),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        DetailSection(),
+                        HourlyWeatherSection(),
+                        WeatherRadarSection(),
+                        ThisWeekSection(),
+                        Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              launchURL(Uri.encodeFull(
+                                  'https://play.google.com/store/apps/details?id=widget.dd.com.overdrop.free&hl=en'));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                'Inspired by OverDrop',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2
+                                    .apply(color: OverDropColors.subText),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 40),
-                    ],
-                  ),
-                );
-              }, childCount: 1, addAutomaticKeepAlives: true),
-            ),
-          ],
+                        const SizedBox(height: 40),
+                      ],
+                    ),
+                  );
+                }, childCount: 1, addAutomaticKeepAlives: true),
+              ),
+            ],
+          ),
         ),
       ),
     );
